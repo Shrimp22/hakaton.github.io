@@ -25,7 +25,7 @@ def create_user(user: users.UserBase, db: Session):
 
 
 def login(db: Session, user: users.UserLogin):
-    get_user = db.query(Users).filter(Users.email == user.email).first()
+    get_user = db.query(Users).filter(Users.email == user.email and pwd_context.verify(user.password, Users.password)).first()
     
     if get_user is None:
         raise HTTPException(404, "User not found")
