@@ -25,8 +25,10 @@ def create_user(user: users.UserBase, db: Session):
 
 
 def login(db: Session, user: users.UserLogin):
-    get_user = db.query(Users).filter(Users.email == user.email and pwd_context.verify(user.password, Users.password)).first()
+    get_user = db.query(Users).filter(Users.email == user.email).first()
     
     if get_user is None:
         raise HTTPException(404, "User not found")
+    if pwd_context.verify(user.password, get_user.password) == False:
+        raise HTTPException(401, "Invalid password")
     return get_user

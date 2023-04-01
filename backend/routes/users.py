@@ -40,3 +40,5 @@ def logout(Authorize: AuthJWT = Depends()):
 
     Authorize.unset_jwt_cookies()
     return {"detail": "Logged out"}
+
+# TODO: email, password update
