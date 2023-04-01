@@ -17,3 +17,16 @@ class ListPlaners(PlanerBase):
     
     class Config:
         orm_mode=True
+        
+
+
+class DeletePlaner(BaseModel):
+    id: int
+
+
+class UpdatePlaner(BaseModel):
+    id: int
+    name: str
+    description: str
+    start_date: datetime
+    end_date: datetime
