@@ -5,7 +5,12 @@ class User(BaseModel):
     first_name: str
     last_name: str
     
-class UserBase(User):
+    class Config:
+        orm_mode=True
+    
+class UserBase(BaseModel):
+    first_name: str
+    last_name: str
     phone: str
     email: str
     password: str

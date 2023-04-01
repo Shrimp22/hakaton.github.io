@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
-from users import User
+from .users import User
+
 class PlanerBase(BaseModel):
     name: str
     description: str

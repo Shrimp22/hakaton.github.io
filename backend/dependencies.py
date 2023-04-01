@@ -41,7 +41,7 @@ async def jwt_required(
     auth.jwt_required()
 
     email = auth.get_jwt_subject()
-    user = db.query(models.User).filter(models.User.email == email).first()
+    user = db.query(models.Users).filter(models.Users.email == email).first()
     return user
 
 
@@ -53,6 +53,6 @@ async def jwt_optional(
 
     email = auth.get_jwt_subject()
     if email:
-        user = db.query(models.User).filter(models.User.email == email).first()
+        user = db.query(models.Users).filter(models.Users.email == email).first()
         return user
     return None
