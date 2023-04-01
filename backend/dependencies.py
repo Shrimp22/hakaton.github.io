@@ -2,6 +2,15 @@ from db.database import SessionLocal
 from passlib.context import CryptContext
 from pydantic import BaseModel
 
+from fastapi_jwt_auth import AuthJWT
+from fastapi import Depends
+from sqlalchemy.orm import Session
+
+from db import models
+
+
+
+
 # Dependency
 def get_db():
     db = SessionLocal()
@@ -25,7 +34,7 @@ class Settings(BaseModel):
     authjwt_cookie_secure = True
     authjwt_cookie_samesite = "none"
 
-""" async def jwt_required(
+async def jwt_required(
         auth: AuthJWT = Depends(),
         db: Session = Depends(get_db)
 ):
@@ -46,4 +55,4 @@ async def jwt_optional(
     if email:
         user = db.query(models.User).filter(models.User.email == email).first()
         return user
-    return None """
+    return None
