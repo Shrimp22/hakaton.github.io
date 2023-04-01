@@ -15,3 +15,8 @@ def create_planer(db: Session, planer: planer.PlanerBase):
     db.add(insert)
     db.commit()
     db.refresh()
+
+
+def list_all_planers(db: Session):
+    planers = db.query(Planer).all()
+    return planers
