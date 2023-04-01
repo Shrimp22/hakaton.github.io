@@ -18,7 +18,7 @@ class Users(Base):
 class Planer(Base):
     __tablename__ ="planer"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(50), nullable=False)
+    name = Column(String(50), nullable=False, unique=True)
     description = Column(Text, nullable=False)
     start_date = Column(DateTime, nullable=False)
     end_date = Column(DateTime, nullable=False)
