@@ -21,6 +21,7 @@ def create_user(user: users.UserBase, db: Session):
     
     db.add(insert)
     db.commit()
+    db.refresh()
     return insert
 
 
